@@ -11,9 +11,9 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView {
-        Home()
-            .navigationTitle("Tic Tac Toe")
-            .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+            Home()
+                .navigationTitle("Tic Tac Toe")
+                .preferredColorScheme(.dark)
         }
     }
 }
@@ -34,12 +34,15 @@ struct Home : View {
                 ForEach(0..<9, id: \.self) { index in
                     
                     ZStack {
+                        Color.black
+                        
                         Color.red
+                            .opacity(moves[index] == "" ? 1 : 0)
                         
                         Text(moves[index])
                             .font(.system(size: 55))
                             .fontWeight(.heavy)
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             
                     }
                     
@@ -48,8 +51,10 @@ struct Home : View {
                     .onTapGesture(perform: {
                         withAnimation(Animation.easeIn(duration: 0.5)) {
                             
-                            moves[index] = isPlaying ? "X" : "O"
+                            if moves[index] == "" {
+                            moves[index] = isPlaying ? "🅇" : "🄾"
                                 isPlaying.toggle()
+                            }
                         }
                     })
                     
