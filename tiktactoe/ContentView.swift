@@ -124,9 +124,14 @@ struct Home : View {
                 return true
             }
         }
-        
-        return false
-        
+        //Check for vertical moves
+        for contestant in 0...2 {
+            if moves[contestant] == player && moves[contestant+3] == player && moves[contestant+6] == player {
+                
+                return true
+            }
+        }
+                return false
     }
         
 struct ContentView_Previews: PreviewProvider {
