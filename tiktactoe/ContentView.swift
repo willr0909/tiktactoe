@@ -131,7 +131,16 @@ struct Home : View {
                 return true
             }
         }
-                return false
+        //Check for diaonal moves
+        if moves[0] == player && moves[4] == player && moves[8] == player {
+           
+            return true
+        }
+        // for other diagonal moves
+        if moves[2] == player && moves[4] == player && moves[6] == player {
+            return true
+        }
+        return false
     }
         
 struct ContentView_Previews: PreviewProvider {
